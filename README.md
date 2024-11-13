@@ -24,10 +24,10 @@ On nightly:
 
 ```bash
 rustc -Vv
-rustc 1.84.0-nightly (fbab78289 2024-11-04)
+rustc 1.84.0-nightly (f7273e004 2024-11-12)
 binary: rustc
-commit-hash: fbab78289dd8c6e8860034e0048cfb538f217700
-commit-date: 2024-11-04
+commit-hash: f7273e0044ad8f35ad27282e4ab776af50b61a54
+commit-date: 2024-11-12
 host: x86_64-unknown-linux-gnu
 release: 1.84.0-nightly
 LLVM version: 19.1.3

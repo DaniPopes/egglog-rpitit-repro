@@ -1,0 +1,12 @@
+diff --git a/src/parser.rs b/src/parser.rs
+index 377330e..12af274 100644
+--- a/src/parser.rs
++++ b/src/parser.rs
+@@ -287,6 +287,7 @@ fn parens<T>(f: impl Parser<T>) -> impl Parser<T> {
+         sequence3(text("("), f, text(")")),
+     )
+     .map(|((), x, ()), _| x)
++    .map(|x, _| x)
+ }
+ 
+ fn program(ctx: &Context) -> Res<Vec<Command>> {

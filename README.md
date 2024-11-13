@@ -12,7 +12,11 @@ Reproduce:
 time cargo clean && cargo build
 
 # Takes 0.2s
-git apply fix.patch
+git restore . && git apply fix.patch
+time cargo clean && cargo build
+
+# Takes 3m30s+ for a single extra no-op map
+git restore . && git apply worse.patch
 time cargo clean && cargo build
 ```
 

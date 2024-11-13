@@ -41,3 +41,48 @@ host: x86_64-unknown-linux-gnu
 release: 1.82.0
 LLVM version: 19.1.1
 ```
+
+---
+
+Output of `cargo rustc -- -Ztime-passes`:
+
+```
+time:   0.000; rss:   83MB ->   87MB (   +4MB)  setup_global_ctxt
+time:   0.006; rss:   87MB ->  117MB (  +31MB)  expand_crate
+time:   0.006; rss:   87MB ->  117MB (  +31MB)  macro_expand_crate
+time:   0.003; rss:  117MB ->  125MB (   +7MB)  late_resolve_crate
+time:   0.003; rss:  117MB ->  125MB (   +7MB)  resolve_crate
+time:   0.005; rss:  125MB ->  131MB (   +6MB)  looking_for_entry_point
+time:   0.005; rss:  125MB ->  131MB (   +6MB)  unused_lib_feature_checking
+time:   0.006; rss:  125MB ->  131MB (   +6MB)  misc_checking_1
+time:   0.020; rss:  131MB ->  169MB (  +38MB)  coherence_checking
+time:   0.064; rss:  131MB ->  192MB (  +61MB)  type_check_crate
+time:   0.026; rss:  192MB ->  199MB (   +7MB)  MIR_borrow_checking
+time:  43.618; rss:  199MB ->  208MB (   +9MB)  MIR_effect_checking
+time:   0.004; rss:  208MB ->  208MB (   +0MB)  privacy_checking_modules
+time:   0.003; rss:  208MB ->  208MB (   +0MB)  lint_checking
+time:   0.000; rss:  208MB ->  208MB (   +0MB)  check_lint_expectations
+time:   0.005; rss:  208MB ->  208MB (   +1MB)  misc_checking_3
+time:   0.002; rss:  208MB ->  210MB (   +1MB)  monomorphization_collector_graph_walk
+time:   0.000; rss:  212MB ->  219MB (   +8MB)  write_allocator_module
+time:   0.003; rss:  219MB ->  227MB (   +8MB)  compile_first_CGU_batch
+time:   0.006; rss:  219MB ->  247MB (  +28MB)  codegen_to_LLVM_IR
+time:   0.011; rss:  208MB ->  247MB (  +39MB)  codegen_crate
+time:   0.000; rss:  247MB ->  246MB (   -1MB)  check_dirty_clean
+time:   0.000; rss:  246MB ->  246MB (   +0MB)  incr_comp_persist_dep_graph
+time:   0.005; rss:  227MB ->  246MB (  +19MB)  LLVM_passes
+time:   0.002; rss:  246MB ->  243MB (   -3MB)  encode_query_results
+time:   0.002; rss:  246MB ->  243MB (   -3MB)  incr_comp_serialize_result_cache
+time:   0.002; rss:  246MB ->  243MB (   -3MB)  incr_comp_persist_result_cache
+time:   0.002; rss:  247MB ->  243MB (   -4MB)  serialize_dep_graph
+time:   0.003; rss:  243MB ->  202MB (  -41MB)  free_global_ctxt
+time:   0.031; rss:  202MB ->  202MB (   +0MB)  run_linker
+time:   0.031; rss:  202MB ->  202MB (   +0MB)  link_binary
+time:   0.031; rss:  202MB ->  202MB (   +0MB)  link_crate
+time:   0.032; rss:  202MB ->  202MB (   +0MB)  link
+time:  43.784; rss:   31MB ->  147MB ( +116MB)  total
+```
+
+---
+
+[`samply`](https://github.com/mstange/samply) profile: <https://share.firefox.dev/3O7AzuO>
